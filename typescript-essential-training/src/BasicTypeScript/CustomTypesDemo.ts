@@ -1,7 +1,19 @@
+//define type using type alias
+type ContactName = string;
+
+//enum helps avoid bugs - for example, here using Active/InActive as string values could cause bugs as string may change
+enum ContactStatus {
+  //by default enum values start with index 0 (number), but we may assign string values to it
+  Active = "active",
+  InActive = "inactive",
+  New = "new",
+}
+
 interface Contact extends Address {
   id: number;
-  name: string;
+  name: ContactName; //using type alias ContactName makes more sense here
   birthDate?: Date; //make the field optional by using question mark
+  status: ContactStatus;
 }
 
 interface Address {
@@ -21,4 +33,5 @@ let primaryContact: Contact = {
   province: "Punjab",
   region: "Lahore",
   postalCode: "54000",
+  status: ContactStatus.Active,
 };

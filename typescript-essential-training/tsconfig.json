@@ -4,7 +4,7 @@
     "checkJs": true,
     "target": "ESNext",
     "outDir": "build",
-    "noEmit": false
+    "noEmit": true
   },
   "include": ["src/**/*"]
 }
