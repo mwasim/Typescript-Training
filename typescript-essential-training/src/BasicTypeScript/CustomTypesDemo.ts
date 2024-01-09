@@ -14,6 +14,9 @@ interface Contact extends Address {
   name: ContactName; //using type alias ContactName makes more sense here
   birthDate?: Date; //make the field optional by using question mark
   status: ContactStatus;
+
+  //define a method on an interface
+  //clone(name: string): Contact;
 }
 
 interface Address {
@@ -35,3 +38,10 @@ let primaryContact: Contact = {
   postalCode: "54000",
   status: ContactStatus.Active,
 };
+
+//typing functions demo
+function clone(source: Contact): Contact {
+  return Object.apply({}, source);
+}
+
+let pContactClone = clone(primaryContact);
