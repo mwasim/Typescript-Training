@@ -83,3 +83,31 @@ function getBirthDate(contact: Contact): Date | number {
     return contact.birthDate;
   }
 }
+
+/*
+  Using keyof operator (looks a lot like instanceof operator)
+*/
+type ContactFields = keyof Contact;
+const field: ContactFields = "name"; //restricts to the names of the fields in Contact interface
+
+//using keyof operator here limits the value of the propertyName
+function getValue(source, propertyName: keyof Contact) {
+  return source[propertyName];
+}
+
+//can be rewritten as generic method
+function getValue_generic<T>(source: T, propertyName: keyof T) {
+  return source[propertyName];
+}
+
+//keyof operator is a great way to constraint generic types too
+function getValue_generic_constraints<T, U extends keyof T>(
+  source: T,
+  propertyName: U
+) {
+  return source[propertyName];
+}
+
+const contactName = getValue(primaryContact, "name"); //keyof operator on this method ensures valid propertyName is used
+const contactNameGeneric = getValue_generic(primaryContact, "name");
+const minMaxValue = getValue_generic({ min: 1, max: 20 }, "min");
