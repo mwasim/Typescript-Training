@@ -62,6 +62,7 @@ interface UserContact /*<TExternalId>*/ extends Address {
   name: ContactName; //using type alias ContactName makes more sense here
   birthDate?: Date; //make the field optional by using question mark
   status: ContactStatus;
+  status_typealias: "active"; //typing string restricts the values
   birthPlace: string;
   //externalId: TExternalId; //Generics can be applied to classes too
 }
@@ -111,3 +112,40 @@ function getValue_generic_constraints<T, U extends keyof T>(
 const contactName = getValue(primaryContact, "name"); //keyof operator on this method ensures valid propertyName is used
 const contactNameGeneric = getValue_generic(primaryContact, "name");
 const minMaxValue = getValue_generic({ min: 1, max: 20 }, "min");
+
+/*
+  Using typeof operator
+*/
+const xValue = "string";
+const yValue = true;
+
+console.log(typeof xValue); // -> string
+console.log(typeof yValue); // -> boolean
+
+type AnimalStatus = "active" | "inactive" | "new";
+interface Animal {
+  id: number;
+  name: string;
+  status: AnimalStatus;
+}
+
+function toAnimal(nameOrAnimal: string | Animal): Animal {
+  if (typeof nameOrAnimal === "object") {
+    return {
+      id: nameOrAnimal.id,
+      name: nameOrAnimal.name,
+      status: nameOrAnimal.status,
+    };
+  } else {
+    return {
+      id: 0,
+      name: nameOrAnimal,
+      status: "new",
+    };
+  }
+}
+
+const minMaxType = { min: 10, max: 20 };
+
+//referring minMaxType later
+function save(source: typeof minMaxType) {} //such code is useful when using dynamic code otherwise writing explicit interace is better
