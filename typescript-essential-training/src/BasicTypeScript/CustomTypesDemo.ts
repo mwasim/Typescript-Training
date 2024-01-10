@@ -1,5 +1,9 @@
 //define type using type alias
 type ContactName = string;
+type ContactBirthDate = Date | number | string; //Use the pipe symbol for union types
+type AddressableContact = Contact & Address; //combines two types together (same as Contact extends Address)
+//enum (ContactStatus) can be written as type alias as below
+type ContactStatusUsingTypeAlias = "active" | "inactive" | "new";
 
 //enum helps avoid bugs - for example, here using Active/InActive as string values could cause bugs as string may change
 enum ContactStatus {
@@ -12,8 +16,9 @@ enum ContactStatus {
 interface Contact extends Address {
   id: number;
   name: ContactName; //using type alias ContactName makes more sense here
-  birthDate?: Date; //make the field optional by using question mark
+  birthDate?: ContactBirthDate; //make the field optional by using question mark
   status: ContactStatus;
+  status_typealias: ContactStatusUsingTypeAlias;
 
   //define a method on an interface
   //clone(name: string): Contact;
@@ -37,6 +42,7 @@ let primaryContact: Contact = {
   region: "Lahore",
   postalCode: "54000",
   status: ContactStatus.Active,
+  status_typealias: "active", //typing string restricts the values
 };
 
 //typing functions demo
@@ -66,3 +72,14 @@ let pContactClone2 = clone_generic<Contact, UserContact>(primaryContact);
 //clone_generic usage demo
 let dateRange = { startDate: Date.now(), endDate: Date.now() };
 let dateRangeClone = clone_generic(dateRange);
+
+//function to operate on union types field (dateOfBirth)
+function getBirthDate(contact: Contact): Date | number {
+  if (typeof contact.birthDate === "number") {
+    return new Date(contact.birthDate);
+  } else if (typeof contact.birthDate === "string") {
+    return Date.parse(contact.birthDate);
+  } else {
+    return contact.birthDate;
+  }
+}
