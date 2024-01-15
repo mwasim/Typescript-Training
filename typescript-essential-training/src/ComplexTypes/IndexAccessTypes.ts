@@ -30,6 +30,7 @@ interface TheContactEvents {
   // ... and so on
 }
 
-function getValue<T, U extends keyof T>(source: T, propertyName: U) {
+function geTheValue<T, U extends keyof T>(source: T, propertyName: U) {
   return source[propertyName];
 }
+
