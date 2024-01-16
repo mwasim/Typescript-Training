@@ -11,9 +11,9 @@ xRecord.log = () => console.log("test");
 //But the below assignment is reported as invalid whih is correct
 //xRecord = 123;
 
-interface Query {
+interface Query<TProp> {
   sort?: "asc" | "desc";
-  matches(val): boolean;
+  matches(val: TProp): boolean;
 }
 
 //choose which properties you'd like to include in the Record of TheContact
@@ -25,23 +25,32 @@ type ContactQuery = Omit<
 >;*/
 
 //Pick is the opposite of Ommit, and picks only the listed properties (e.g. id, name)
+/*
 type ContactQuery = //Omit<
   Partial<Pick<Record<keyof TheContact, Query>, "id" | "name">>;
 //>;
+*/
 
 //REQUIRED QUERY TYPE
 //Let's make the ContactQuery field required instead of optional
-type RequiredContactQuery = Required<ContactQuery>;
+/*type RequiredContactQuery = Required<ContactQuery>;*/
+
+//Instead of using Records (& Partial) syntax, we can achieve the same results using below MAP syntax
+type ContactQuery = {
+  [TProp in keyof TheContact]?: Query<TheContact[TProp]>; //property indexer syntax
+};
 
 function searchContacts(
-  contacts: Contact[],
+  contacts: TheContact[],
   //query: Record<keyof TheContact, Query>
   query: ContactQuery
 ) {
   return contacts.filter((contact) => {
-    for (const property of Object.keys(contact) as (keyof Contact)[]) {
+    for (const property of Object.keys(contact) as (keyof TheContact)[]) {
       // get the query object for this property
-      const propertyQuery = query[property];
+      const propertyQuery = query[property] as Query<
+        TheContact[keyof TheContact]
+      >;
       // check to see if it matches
       if (propertyQuery && propertyQuery.matches(contact[property])) {
         return true;
