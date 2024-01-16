@@ -13,15 +13,17 @@ interface TheContact {
   address: TheAddress;
 }
 
+type AwesomeContact = TheContact["address"]["postalCode"];
+
 interface TheContactEvent {
-  contactId: number;
+  contactId: TheContact["id"];
 }
 
 interface TheContactDeletedEvent extends TheContactEvent {}
 
 interface TheContactStatusChangedEvent extends TheContactEvent {
-  oldStatus: TheContactStatus;
-  newStatus: TheContactStatus;
+  oldStatus: TheContact["status"];
+  newStatus: TheContact["status"];
 }
 
 interface TheContactEvents {
@@ -34,3 +36,13 @@ function geTheValue<T, U extends keyof T>(source: T, propertyName: U) {
   return source[propertyName];
 }
 
+function handleEvent<T extends keyof TheContactEvents>(
+  eventName: T,
+  handler: (evt: TheContactEvents[T]) => void
+) {
+  if (eventName == "statusChanged") {
+    handler({ contactId: 1, oldStatus: "active", newStatus: "inactive" });
+  }
+}
+
+handleEvent("statusChanged", (evt) => evt.contactId);
