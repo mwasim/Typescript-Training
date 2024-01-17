@@ -1,6 +1,7 @@
 {
   "dependencies": {
-    "@types/jquery": "^3.5.29"
+    "@types/jquery": "^3.5.29",
+    "reflect-metadata": "^0.2.1"
   },
   "devDependencies": {
     "typescript": "^5.3.3"
