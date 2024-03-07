@@ -1,1 +1,1 @@
-# TypescriptProjects
+# Typescript Training
