@@ -18,6 +18,8 @@ UnionTypesChallenge();
 //ARRAYS
 import ArraysTutorial from "./ts3-arrays.ts";
 ArraysTutorial();
+import ArrayChallenge from "./ts3-arrays-challenge.ts";
+ArrayChallenge();
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <div>
