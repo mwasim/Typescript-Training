@@ -1,7 +1,7 @@
 /************** Type Annotations ***************/
 
 const TypeAnnotationsTutorial = () => {
-  console.log("*********** Type Annotations Tutorial ***********");
+  console.log("*********** Type Annotations in TypeScript ***********");
   /*
     STRINGS
 */

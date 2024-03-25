@@ -1,7 +1,7 @@
 /************** UNION TYPES ***************/
 
 const UnionTypesTutorial = () => {
-  console.log("\n*********** Union Types Tutorial ***********");
+  console.log("\n*********** Union Types in TypeScript ***********");
   /*
     UNION TYPES
   */
