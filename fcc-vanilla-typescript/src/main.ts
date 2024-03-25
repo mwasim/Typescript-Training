@@ -8,6 +8,11 @@ TypeAnnotationsTutorial();
 //TYPE ANNOTATIONS - Challenge
 import TypeAnnotationsChallenge from "./ts1-type-annotations-challenge.ts";
 TypeAnnotationsChallenge();
+//UNION TYPES
+import UnionTypesTutorial from "./ts2-union-types.ts";
+UnionTypesTutorial();
+import UnionTypesChallenge from "./ts2-union-types-challenge.ts";
+UnionTypesChallenge();
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <div>
