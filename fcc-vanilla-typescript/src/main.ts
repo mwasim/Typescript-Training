@@ -21,6 +21,10 @@ ArraysTutorial();
 import ArrayChallenge from "./ts3-arrays-challenge.ts";
 ArrayChallenge();
 
+//OBJECTS
+import ObjectsTutorial from "./ts4-objects.ts";
+ObjectsTutorial();
+
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <div>
     <a href="https://vitejs.dev" target="_blank">
