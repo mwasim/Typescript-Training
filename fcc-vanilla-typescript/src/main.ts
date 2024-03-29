@@ -24,6 +24,8 @@ ArrayChallenge();
 //OBJECTS
 import ObjectsTutorial from "./ts4-objects.ts";
 ObjectsTutorial();
+import ObjectsChallenge from "./ts4-objects-challenge.ts";
+ObjectsChallenge();
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <div>
