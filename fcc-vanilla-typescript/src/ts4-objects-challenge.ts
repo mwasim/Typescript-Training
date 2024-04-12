@@ -24,7 +24,7 @@ const ObjectsChallenge = () => {
   let flower = { title: "flower" };
 
   let items: { title: string; price?: number }[] = [clock, charger, flower];
-  //items.push({ title: `glass`, price: `3`}); //ERROR: string is not assignable to number
+  //items.push({ title: `glass`, price: `expensive`}); //ERROR: string is not assignable to number
   items.forEach((item) => {
     console.log(`title: ${item.title}, cost: ${item.price}\n`);
   });

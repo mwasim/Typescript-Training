@@ -22,7 +22,7 @@ const TypeAnnotationsTutorial = () => {
 
   let number = 10; //TYPE IS INFERRED AS NUMBER
   //number = "string"; //SYNTAX ERROR - TYPE NOT ASIGNABLE
-
+  console.log(number);
   /*
     BOOLEANS
 */
@@ -30,6 +30,7 @@ const TypeAnnotationsTutorial = () => {
   isValid = false;
   //isValid = "string"; //SYNTAX ERROR - TYPE NOT ASIGNABLE
   //isValid = 10; //SYNTAX ERROR - TYPE NOT ASIGNABLE
+  console.log(isValid);
 };
 
 export default TypeAnnotationsTutorial;

@@ -8,13 +8,14 @@ const UnionTypesTutorial = () => {
   let tax: number | string = 15;
   tax = 100; //VALID
   tax = "$150"; //VALID
+  console.log(`tax: ${tax}`);
 
   //UNION TYPES - Literal value types
   let requestStatus: "pending" | "success" | "error" = "pending";
   requestStatus = "error"; //VALID
   requestStatus = "success"; //VALID
   //requestStatus = 'unknown'; //INVALID
-
+  console.log(`requestStatus: ${requestStatus}`);
   /*
     ANY TYPE -- Just be careful when you use it.
     - Can be anything number, string, boolean, function etc.
@@ -22,7 +23,7 @@ const UnionTypesTutorial = () => {
   let notSure: any = 4;
   notSure = "maybe a string";
   notSure = true; //
-
+  console.log(`notSure: ${notSure}`);
   /*
     PRACTICAL APPLICATION OF TYPE ANNOTATIONS
   */

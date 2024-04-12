@@ -27,6 +27,9 @@ ObjectsTutorial();
 import ObjectsChallenge from "./ts4-objects-challenge.ts";
 ObjectsChallenge();
 
+import FunctionsTutorial from "./ts5-functions.ts";
+FunctionsTutorial();
+
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <div>
     <a href="https://vitejs.dev" target="_blank">

@@ -16,7 +16,7 @@ const ArraysTutorial = () => {
   console.log(`fruits: ${fruits}`);
 
   //let randomValues: [] = ['hello']; //ERROR: Target arrays allows ZERO items (type is empty array)
-  let emptyValues = []; //Now the type is any - Not recommended. Always use typed arrays
+  //let emptyValues = []; //Now the type is any - Not recommended. Always use typed arrays
 
   let stringNumArray = ["John", "Jane", 1]; //Type is inferred as (string|number)[]
   console.log(`stringNumArray (Union Array): ${stringNumArray}`);
