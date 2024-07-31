@@ -59,7 +59,7 @@ const fetchPosts = () => __awaiter(void 0, void 0, void 0, function* () {
 });
 const showPosts = () => __awaiter(void 0, void 0, void 0, function* () {
     const posts = yield fetchPosts();
-    // Display the contents of the first item in the response
+    // Display 3the contents of the first item in the response
     const firstPost = posts[0];
     console.log(`UserId: ${firstPost.userId}`);
     console.log(`ID: ${firstPost.id}`);
