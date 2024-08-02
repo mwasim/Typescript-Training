@@ -1,7 +1,33 @@
 /*
-    Class Definition
+  Declare and interface to ensure class shape
+  - -Using interface to establish a Code Contract
+  When to use interfaces
+    - Because JavaScript does not have a concept of interfaces, they are removed when TypeScript is transpiled to JavaScript. 
+    TypeScript allows you to use an interface to 
+      - define a data structure without the need for a class. 
+      - use interfaces to define parameter objects for functions, 
+      - define the structure for various framework properties, 
+      - define how objects look from remote services or APIs.
 */
-class Car {
+interface Vehicle {
+  make: string;
+  color: string;
+  doors: number;
+  accelerate(speed: number): string;
+  brake(): string;
+  turn(direction: "left" | "right"): string;
+}
+
+/*
+    Class Definition
+
+    When to use classes
+      - Classes allow you to define implementation details. 
+      - Interfaces solely define how data is structured. 
+      - Classes allow you to define methods, fields, and properties. 
+      - Classes also provide a way to template objects, defining default values.
+*/
+class Car implements Vehicle {
   //Properties
   private static numberOfCards: number = 0;
   private _make: string;
