@@ -3,6 +3,7 @@
 */
 class Car {
   //Properties
+  private static numberOfCards: number = 0;
   private _make: string;
   private _color: string;
   private _doors: number;
@@ -16,6 +17,8 @@ class Car {
     } else {
       throw new Error("Doors must be an even number");
     }
+
+    Car.numberOfCards++;
   }
 
   //Accessors
@@ -58,11 +61,15 @@ class Car {
   }
 
   //This method performs work for other methods
-  private worker() {
+  protected worker() {
     return this._make;
   }
-}
 
+  public static getNumberOfCards() {
+    return Car.numberOfCards;
+  }
+}
+console.log("Defining and Instantiating Classes Demo");
 /*
     Instantiate the class
 */
@@ -78,3 +85,48 @@ console.log(myCar2.doors);
 console.log(myCar1.accelerate(35));
 console.log(myCar1.turn("right"));
 console.log(myCar1.brake());
+
+console.log(Car.getNumberOfCards());
+console.log("\n");
+
+/*
+  Extending Classes
+*/
+
+console.log("Extending Classes Demo");
+class ElectricCar extends Car {
+  //Properties
+  private _range: number;
+
+  //Constructor
+  constructor(make: string, color: string, range: number, doors: number = 2) {
+    super(make, color, doors);
+
+    this._range = range;
+  }
+
+  //Accesssors
+  get range() {
+    return this._range;
+  }
+  set range(range) {
+    this._range = range;
+  }
+
+  //Methods
+  //override brake method with different implementation
+  brake(): string {
+    return `${this.worker()} is braking with the regenerative braking system.`;
+  }
+
+  charge() {
+    return `${this.worker()} is charging.`;
+  }
+}
+
+//Instantiating Electric Car
+let spark = new ElectricCar("Spark Electric Motors", "silver", 124, 2);
+let eCar = new ElectricCar("Electric Car Co.", "black", 263);
+console.log(eCar.doors); // returns the default, 2
+console.log(spark.charge()); // returns "Spark Electric Motors is charging"
+console.log(spark.brake());
