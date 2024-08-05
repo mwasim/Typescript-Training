@@ -198,3 +198,35 @@ const processor2 = new processIdentity2<number, string>(65, "Hello");
 processor2.process();
 //processor2.value = "100"; // Type check error
 console.log("\n");
+
+/*
+  Implement generics with custom types and classes
+*/
+console.log("*** Generics with custom types and classes Demo: ***\n");
+class Car {
+  make: string = "Generic Car";
+  doors: number = 4;
+}
+
+class ElectricCar extends Car {
+  make: string = "Electric Car";
+  doors: number = 4;
+}
+
+class Truck extends Car {
+  make: string = "Truck";
+  doors: number = 2;
+}
+
+function accelerate<T extends Car>(car: T): T {
+  console.log(`All ${car.doors} are closed.`);
+  console.log(`The ${car.make} is now accelerating!`);
+
+  return car;
+}
+
+const myElectricCar = new ElectricCar();
+accelerate(myElectricCar);
+const myTruck = new Truck();
+accelerate(myTruck);
+console.log("\n");
